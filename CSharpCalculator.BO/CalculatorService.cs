@@ -10,8 +10,15 @@ namespace CSharpCalculator.BO
     {
         public static String ParseInput(string previousInput, string currentInput)
         {
-            //return int.Parse(previousInput + currentInput).ToString();
-            return Convert.ToString(int.Parse(previousInput + currentInput));
+            int intCheck;
+
+            if (int.TryParse(previousInput, out intCheck))
+                if (int.TryParse(currentInput, out intCheck))
+                    return Convert.ToString(int.Parse(previousInput + currentInput));
+                else return previousInput;
+            else
+                return ("0");
+
         }
 
     }

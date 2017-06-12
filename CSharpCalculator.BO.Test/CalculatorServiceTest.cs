@@ -13,21 +13,16 @@ namespace CSharpCalculator.BO.Test
     {
         [TestCase("1", "5", "15")]
         [TestCase("2", "5", "25")]
-        [TestCase("0", "5", "5")]
-        [TestCase("1", "a", "5")] //expected is previous input
-        [TestCase("a", "5", "0")] //expected is 0
+        [TestCase("a", "4", "0")] //handle attempt to enter non-numeric value as previous input. Method should return "0" in this case.
+        [TestCase("1", "a", "1")] //Handle attempt to enter non-numeric value as new input. Method should return previous input in the case it contains valid value.
+        [TestCase("0", "5", "5")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> valid value
+        [TestCase("0", "n", "0")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> invalid value
+
 
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {
-
             string actualResult = CalculatorService.ParseInput(previousInput, currentInput);
-            Assert.That(actualResult, Is.EqualTo(expectedResult));            
-            //string Result = "WrongInput123";
-
-            //int intResult;
-            //bool isResultInt = int.TryParse(Result,out intResult);
-            //Assert.That(isResultInt, Is.Not.False);
-
+            Assert.That(actualResult, Is.EqualTo(expectedResult));
         }
     }
 }
