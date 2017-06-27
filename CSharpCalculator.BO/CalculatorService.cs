@@ -12,12 +12,19 @@ namespace CSharpCalculator.BO
         {
             int intCheck;
 
-            if (int.TryParse(previousInput, out intCheck))
-                if (int.TryParse(currentInput, out intCheck))
-                    return Convert.ToString(int.Parse(previousInput + currentInput));
-                else return previousInput;
+
+            if (previousInput == "/")
+                return Convert.ToString(previousInput + currentInput);
             else
-                return ("0");
+                if (currentInput == "/")
+                return Convert.ToString(previousInput + currentInput);
+
+                    if (int.TryParse(previousInput, out intCheck))
+                        if (int.TryParse(currentInput, out intCheck))
+                             return Convert.ToString(int.Parse(previousInput + currentInput));
+                        else return previousInput;
+                    else
+                             return ("0");
 
         }
 

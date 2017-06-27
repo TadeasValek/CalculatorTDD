@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpCalculator.BO", "CSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpCalculator.BO.Test", "CSharpCalculator.BO.Test\CSharpCalculator.BO.Test.csproj", "{95088F57-8A80-4B52-AD92-E032AF29E800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpCalculatorTDD.WinFormUA", "CSharpCalculatorTDD.WinFormUA\CSharpCalculatorTDD.WinFormUA.csproj", "{624D0857-96C3-4FB1-AFAC-58F50716C367}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{95088F57-8A80-4B52-AD92-E032AF29E800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95088F57-8A80-4B52-AD92-E032AF29E800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95088F57-8A80-4B52-AD92-E032AF29E800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624D0857-96C3-4FB1-AFAC-58F50716C367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624D0857-96C3-4FB1-AFAC-58F50716C367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624D0857-96C3-4FB1-AFAC-58F50716C367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624D0857-96C3-4FB1-AFAC-58F50716C367}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

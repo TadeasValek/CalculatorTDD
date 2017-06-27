@@ -17,7 +17,10 @@ namespace CSharpCalculator.BO.Test
         [TestCase("1", "a", "1")] //Handle attempt to enter non-numeric value as new input. Method should return previous input in the case it contains valid value.
         [TestCase("0", "5", "5")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> valid value
         [TestCase("0", "n", "0")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> invalid value
-
+        [TestCase("/", "4", "/4")]
+        [TestCase("/", "25", "/25")]
+        [TestCase("4", "/", "4/")]
+        [TestCase("40", "/", "40/")]
 
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {
