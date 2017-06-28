@@ -68,14 +68,26 @@ namespace CSharpCalculatorTDD.WinFormUA
             tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "9");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonDivide_Click(object sender, EventArgs e)
         {
            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "/");
         }
+
+        private void buttonMultiply_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "*");
+        }
+
+        private void buttonLess_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "-");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

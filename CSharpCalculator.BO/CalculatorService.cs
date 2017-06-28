@@ -11,20 +11,26 @@ namespace CSharpCalculator.BO
         public static String ParseInput(string previousInput, string currentInput)
         {
             int intCheck;
+            string[] operators = new string[] { "+", "-", "*", "/" };
 
+            if (operators.Contains(previousInput))
+                if (operators.Contains(currentInput))
+                    return Convert.ToString(previousInput);
+                else
+                    return Convert.ToString(previousInput + currentInput);
 
-            if (previousInput == "/")
-                return Convert.ToString(previousInput + currentInput);
             else
-                if (currentInput == "/")
-                return Convert.ToString(previousInput + currentInput);
+                if (operators.Contains(currentInput))
+                        if (previousInput == null)
+                        return ("0");
+                else
+                    return Convert.ToString(previousInput + currentInput);
 
                     if (int.TryParse(previousInput, out intCheck))
                         if (int.TryParse(currentInput, out intCheck))
                              return Convert.ToString(int.Parse(previousInput + currentInput));
                         else return previousInput;
-                    else
-                             return ("0");
+                else return ("0");
 
         }
 

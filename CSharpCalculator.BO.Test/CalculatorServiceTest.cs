@@ -21,6 +21,9 @@ namespace CSharpCalculator.BO.Test
         [TestCase("/", "25", "/25")]
         [TestCase("4", "/", "4/")]
         [TestCase("40", "/", "40/")]
+        [TestCase("40", "*", "40*")]
+        [TestCase("/", "*", "/")]
+
 
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {

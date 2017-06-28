@@ -40,6 +40,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button0 = new System.Windows.Forms.Button();
             this.buttonDivide = new System.Windows.Forms.Button();
+            this.buttonMultiply = new System.Windows.Forms.Button();
+            this.buttonLess = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -163,11 +165,33 @@
             this.buttonDivide.UseVisualStyleBackColor = true;
             this.buttonDivide.Click += new System.EventHandler(this.buttonDivide_Click);
             // 
+            // buttonMultiply
+            // 
+            this.buttonMultiply.Location = new System.Drawing.Point(226, 133);
+            this.buttonMultiply.Name = "buttonMultiply";
+            this.buttonMultiply.Size = new System.Drawing.Size(40, 40);
+            this.buttonMultiply.TabIndex = 12;
+            this.buttonMultiply.Text = "*";
+            this.buttonMultiply.UseVisualStyleBackColor = true;
+            this.buttonMultiply.Click += new System.EventHandler(this.buttonMultiply_Click);
+            // 
+            // buttonLess
+            // 
+            this.buttonLess.Location = new System.Drawing.Point(226, 179);
+            this.buttonLess.Name = "buttonLess";
+            this.buttonLess.Size = new System.Drawing.Size(40, 40);
+            this.buttonLess.TabIndex = 13;
+            this.buttonLess.Text = "-";
+            this.buttonLess.UseVisualStyleBackColor = true;
+            this.buttonLess.Click += new System.EventHandler(this.buttonLess_Click);
+            // 
             // MyCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 281);
+            this.Controls.Add(this.buttonLess);
+            this.Controls.Add(this.buttonMultiply);
             this.Controls.Add(this.buttonDivide);
             this.Controls.Add(this.button0);
             this.Controls.Add(this.button9);
@@ -204,6 +228,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox tbResult;
         private System.Windows.Forms.Button buttonDivide;
+        private System.Windows.Forms.Button buttonMultiply;
+        private System.Windows.Forms.Button buttonLess;
     }
 }
 
