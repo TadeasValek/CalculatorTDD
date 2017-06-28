@@ -11,26 +11,29 @@ namespace CSharpCalculator.BO
         public static String ParseInput(string previousInput, string currentInput)
         {
             int intCheck;
+            string[] allowedCharacters = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             string[] operators = new string[] { "+", "-", "*", "/" };
 
-            if (operators.Contains(previousInput))
-                if (operators.Contains(currentInput))
-                    return Convert.ToString(previousInput);
-                else
-                    return Convert.ToString(previousInput + currentInput);
 
-            else
-                if (operators.Contains(currentInput))
-                        if (previousInput == null)
+            if (operators.Contains(previousInput.Substring(previousInput.Length - 1)))
+                  if (operators.Contains(currentInput))
                         return ("0");
-                else
-                    return Convert.ToString(previousInput + currentInput);
-
-                    if (int.TryParse(previousInput, out intCheck))
+                  else
                         if (int.TryParse(currentInput, out intCheck))
-                             return Convert.ToString(int.Parse(previousInput + currentInput));
-                        else return previousInput;
-                else return ("0");
+                            return Convert.ToString((previousInput + currentInput));
+                        else return ("0");
+
+            else if (operators.Contains(currentInput))
+                    if (previousInput == null)
+                        return ("0");
+                    else
+                        return Convert.ToString(previousInput + currentInput);
+
+             else   if (int.TryParse(currentInput, out intCheck))
+                        if (allowedCharacters.Contains(previousInput.Substring(previousInput.Length - 1)))
+                            return Convert.ToString(previousInput + currentInput);
+                        else return ("0");
+             else return ("0");
 
         }
 
