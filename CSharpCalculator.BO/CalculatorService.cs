@@ -8,34 +8,63 @@ namespace CSharpCalculator.BO
 {
     public static class CalculatorService
     {
+
+
+        private static String inputValidation(string testedInput)
+        {
+            char[] numbers = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] operators = new char[] { '+', '-', '*', '/' };
+
+                char y;
+                int operatorsCounter = 0;
+
+                for (int i = 0; i < testedInput.Length; i++)
+                {
+                    y = testedInput[i];
+                    if (!((operators.Contains(y)) || (numbers.Contains(y))))
+                    {
+                        return "invalid";
+                    }
+                //Verify only 1 operator
+                if (operators.Contains(y))
+                        {
+                        operatorsCounter++;
+                        if ((operatorsCounter) > 1)
+                            {
+                            return "moreOperators";
+                            }
+                        }
+                }
+            return "valid";
+        }
+
+
         public static String ParseInput(string previousInput, string currentInput)
         {
-            int intCheck;
-            string[] allowedCharacters = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-            string[] operators = new string[] { "+", "-", "*", "/" };
 
-
-            if (operators.Contains(previousInput.Substring(previousInput.Length - 1)))
-                  if (operators.Contains(currentInput))
-                        return ("0");
-                  else
-                        if (int.TryParse(currentInput, out intCheck))
-                            return Convert.ToString((previousInput + currentInput));
-                        else return ("0");
-
-            else if (operators.Contains(currentInput))
-                    if (previousInput == null)
-                        return ("0");
-                    else
-                        return Convert.ToString(previousInput + currentInput);
-
-             else   if (int.TryParse(currentInput, out intCheck))
-                        if (allowedCharacters.Contains(previousInput.Substring(previousInput.Length - 1)))
-                            return Convert.ToString(previousInput + currentInput);
-                        else return ("0");
-             else return ("0");
+            if ((inputValidation(previousInput + currentInput).Equals("valid")))
+            {
+                if (previousInput == "0")
+                {
+                    return (currentInput);
+                }
+                else
+                {
+                    return (previousInput + currentInput);
+                }
+            }
+            else if (((inputValidation(currentInput).Equals("invalid"))) 
+                    && ((inputValidation(previousInput).Equals("valid"))))
+            {
+                return (previousInput);
+            }
+            else
+            {
+                return "0";
+            }
 
         }
+
 
     }
 }

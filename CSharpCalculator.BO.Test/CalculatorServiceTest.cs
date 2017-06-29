@@ -11,7 +11,6 @@ namespace CSharpCalculator.BO.Test
     [TestFixture]
     public class CalculatorServiceTest
     {
-        [TestCase("1", "5", "15")]
         [TestCase("2", "5", "25")]
         [TestCase("a", "4", "0")] //handle attempt to enter non-numeric value as previous input. Method should return "0" in this case.
         [TestCase("1", "a", "1")] //Handle attempt to enter non-numeric value as new input. Method should return previous input in the case it contains valid value.
@@ -28,6 +27,10 @@ namespace CSharpCalculator.BO.Test
         [TestCase("444/", "*", "0")]
         [TestCase("555/", "/", "0")]
         [TestCase("555/", "444", "555/444")]
+        [TestCase("555/456", "444", "555/456444")]
+        [TestCase("555/45/6", "444", "0")]
+        [TestCase("555", "4/4*4", "0")]
+        [TestCase("//", "4", "0")]
 
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {
