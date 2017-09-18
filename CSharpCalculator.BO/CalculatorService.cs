@@ -15,7 +15,7 @@ namespace CSharpCalculator.BO
             char y = previousInput[previousInput.Length - 1];
             char z = currentInput[0];
 
-            float result = calculateResult("26545+412");
+            float result = calculateResult("9999/556");
 
             if (operators.Contains(y) && operators.Contains(z))
             {
@@ -50,22 +50,44 @@ namespace CSharpCalculator.BO
             return testedInput.All(x => char.IsNumber(x) || x == '+' || x == '-' || x == '*' || x == '/');
         }
 
-        private static float calculateResult(string joinedInput)
+       /* public static String calculate()
+        {
+            long abc = calculateResult(previousInput && currentInput);
+        }
+        */
+
+
+            private static float calculateResult(string joinedInput)
         {
             int inputLength = joinedInput.Length;
 
             if (joinedInput.IndexOf('+') > 0)
             {
-                float a = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('+') + 2));
-                float b = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('+'), inputLength - joinedInput.IndexOf('+')));
-                return a+b;
-                }
+                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('+'), inputLength - joinedInput.IndexOf('+')));
+                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('+') + 1));
+                return a + b;
+            }
             else if (joinedInput.IndexOf('-') > 0)
             {
-                return 2;
+                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('-'), inputLength - joinedInput.IndexOf('-')));
+                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('-') + 1));
+                return a - b;
             }
-            else return 3;
+            else if (joinedInput.IndexOf('*') > 0)
+            {
+                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('*'), inputLength - joinedInput.IndexOf('*')));
+                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('*') + 1));
+                return a * b;
+            }
+            else if (joinedInput.IndexOf('/') > 0)
+            {
+                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('/'), inputLength - joinedInput.IndexOf('/')));
+                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('/') + 1));
+                return a / b;
+            }
+            else return 0;
         }
+
 
     }
 }

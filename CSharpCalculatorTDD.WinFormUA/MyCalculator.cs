@@ -88,6 +88,14 @@ namespace CSharpCalculatorTDD.WinFormUA
         {
 
         }
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "+");
+        }
 
+        private void buttonEqual_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "=");
+        }
     }
 }
