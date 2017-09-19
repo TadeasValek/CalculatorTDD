@@ -16,7 +16,6 @@ namespace CSharpCalculator.BO
             char z = currentInput[0];
             char w = previousInput[0];
 
-            //float result = calculateResult("9999/556");
 
             //erase if c pressed
             if (currentInput.Contains("c"))
@@ -44,6 +43,13 @@ namespace CSharpCalculator.BO
                 }
                 else
                 {
+               // If there is operand in previous input already and another is selected give result + new operand
+                    if ((previousInput+currentInput).Count (x => x == '+' || x == '-' || x == '*' || x == '/')>1)
+
+                    {
+                        return Convert.ToString(calculateResult(previousInput)) + currentInput;
+                    }
+                    else
                     return (previousInput + currentInput);
                 }
             }
@@ -62,7 +68,6 @@ namespace CSharpCalculator.BO
             }
 
         
-
         private static bool inputValidation(string testedInput)
         {
             return testedInput.All(x => char.IsNumber(x) || x == '+' || x == '-' || x == '*' || x == '/');
@@ -76,7 +81,6 @@ namespace CSharpCalculator.BO
             {
                 float a = Convert.ToSingle(calculateInput.Remove(calculateInput.IndexOf('+'), inputLength - calculateInput.IndexOf('+')));
                 float b = Convert.ToSingle(calculateInput.Remove(0, calculateInput.IndexOf('+') + 1));
-                //float b = Convert.ToSingle(calculateInput.Remove(0, 2));
                 return a + b;
             }
             else if (calculateInput.IndexOf('-') > 0)
