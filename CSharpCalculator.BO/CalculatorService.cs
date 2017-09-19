@@ -11,15 +11,29 @@ namespace CSharpCalculator.BO
         public static String ParseInput(string previousInput, string currentInput)
         {
 
-            char[] operators = new char[] { '+', '-', '*', '/' };
+            char[] operands = new char[] { '+', '-', '*', '/' };
             char y = previousInput[previousInput.Length - 1];
             char z = currentInput[0];
+            char w = previousInput[0];
 
-            float result = calculateResult("9999/556");
+            //float result = calculateResult("9999/556");
 
-            if (operators.Contains(y) && operators.Contains(z))
+            //erase if c pressed
+            if (currentInput.Contains("c"))
+                return "0";
+
+
+            //if previousInput is operand, change it if another operator is used
+            if (operands.Contains(y) && operands.Contains(z))
             {
                 return ((previousInput.Remove((previousInput.Length - 1), 1)) + currentInput);
+            }
+            else
+
+            // if operand is the first char in previousInput, ignore it
+            if (operands.Contains(w))
+            {
+                return ((previousInput.Remove((0), 1)) + currentInput);
             }
             else
 
@@ -36,53 +50,52 @@ namespace CSharpCalculator.BO
             }
             else if (!inputValidation(currentInput) && ((inputValidation(previousInput))))
             {
-                return (previousInput);
+                if (currentInput == "=")
+                {
+                    return Convert.ToString(calculateResult(previousInput));
+                }
+
+                else return (previousInput);
+                
             }
             else
-            {
                 return "0";
             }
 
-        }
+        
 
         private static bool inputValidation(string testedInput)
         {
             return testedInput.All(x => char.IsNumber(x) || x == '+' || x == '-' || x == '*' || x == '/');
         }
 
-       /* public static String calculate()
+            private static float calculateResult(string calculateInput)
         {
-            long abc = calculateResult(previousInput && currentInput);
-        }
-        */
+            int inputLength = calculateInput.Length;
 
-
-            private static float calculateResult(string joinedInput)
-        {
-            int inputLength = joinedInput.Length;
-
-            if (joinedInput.IndexOf('+') > 0)
+            if (calculateInput.IndexOf('+') > 0)
             {
-                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('+'), inputLength - joinedInput.IndexOf('+')));
-                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('+') + 1));
+                float a = Convert.ToSingle(calculateInput.Remove(calculateInput.IndexOf('+'), inputLength - calculateInput.IndexOf('+')));
+                float b = Convert.ToSingle(calculateInput.Remove(0, calculateInput.IndexOf('+') + 1));
+                //float b = Convert.ToSingle(calculateInput.Remove(0, 2));
                 return a + b;
             }
-            else if (joinedInput.IndexOf('-') > 0)
+            else if (calculateInput.IndexOf('-') > 0)
             {
-                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('-'), inputLength - joinedInput.IndexOf('-')));
-                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('-') + 1));
+                float a = Convert.ToSingle(calculateInput.Remove(calculateInput.IndexOf('-'), inputLength - calculateInput.IndexOf('-')));
+                float b = Convert.ToSingle(calculateInput.Remove(0, calculateInput.IndexOf('-') + 1));
                 return a - b;
             }
-            else if (joinedInput.IndexOf('*') > 0)
+            else if (calculateInput.IndexOf('*') > 0)
             {
-                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('*'), inputLength - joinedInput.IndexOf('*')));
-                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('*') + 1));
+                float a = Convert.ToSingle(calculateInput.Remove(calculateInput.IndexOf('*'), inputLength - calculateInput.IndexOf('*')));
+                float b = Convert.ToSingle(calculateInput.Remove(0, calculateInput.IndexOf('*') + 1));
                 return a * b;
             }
-            else if (joinedInput.IndexOf('/') > 0)
+            else if (calculateInput.IndexOf('/') > 0)
             {
-                float a = Convert.ToSingle(joinedInput.Remove(joinedInput.IndexOf('/'), inputLength - joinedInput.IndexOf('/')));
-                float b = Convert.ToSingle(joinedInput.Remove(0, inputLength - joinedInput.IndexOf('/') + 1));
+                float a = Convert.ToSingle(calculateInput.Remove(calculateInput.IndexOf('/'), inputLength - calculateInput.IndexOf('/')));
+                float b = Convert.ToSingle(calculateInput.Remove(0, calculateInput.IndexOf('/') + 1));
                 return a / b;
             }
             else return 0;

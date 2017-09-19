@@ -16,21 +16,22 @@ namespace CSharpCalculator.BO.Test
         [TestCase("1", "a", "1")] //Handle attempt to enter non-numeric value as new input. Method should return previous input in the case it contains valid value.
         [TestCase("0", "5", "5")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> valid value
         [TestCase("0", "n", "0")] //when previous input contains "0" (default) value. return only new input in the case it contains valid value. -> invalid value
-        [TestCase("/", "4", "/4")]
-        [TestCase("/", "25", "/25")]
+        [TestCase("/", "25", "25")]
         [TestCase("4", "/", "4/")]
         [TestCase("40", "/", "40/")]
         [TestCase("40", "*", "40*")]
-        [TestCase("/", "111", "/111")]
         [TestCase("445", "*", "445*")]
-        [TestCase("/", "*", "0")]
-        [TestCase("444/", "*", "0")]
-        [TestCase("555/", "/", "0")]
+        [TestCase("/", "*", "*")]
+        [TestCase("444/", "*", "444*")]
+        [TestCase("555/", "/", "555/")]
         [TestCase("555/", "444", "555/444")]
         [TestCase("555/456", "444", "555/456444")]
-        [TestCase("555/45/6", "444", "0")]
-        [TestCase("555", "4/4*4", "555")]
-        [TestCase("//", "4", "0")]
+        [TestCase("/", "4", "4")]
+        [TestCase("489", "c", "0")]
+        [TestCase("10+20", "=", "30")]
+        [TestCase("1050+200", "=", "1250")]
+        [TestCase("10000/2", "=", "5000")]
+        [TestCase("1/2", "=", "0.5")]
 
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {

@@ -97,5 +97,11 @@ namespace CSharpCalculatorTDD.WinFormUA
         {
             tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "=");
         }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            tbResult.Text = CalculatorService.ParseInput(tbResult.Text, "c");
+        }
+
     }
 }
