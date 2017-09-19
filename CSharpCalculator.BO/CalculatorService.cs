@@ -22,7 +22,6 @@ namespace CSharpCalculator.BO
             if (currentInput.Contains("c"))
                 return "0";
 
-
             //if previousInput is operand, change it if another operator is used
             if (operands.Contains(y) && operands.Contains(z))
             {
