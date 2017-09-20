@@ -45,7 +45,6 @@ namespace CSharpCalculator.BO
                 {
                // If there is operand in previous input already and another is selected give result + new operand
                     if ((previousInput+currentInput).Count (x => x == '+' || x == '-' || x == '*' || x == '/')>1)
-
                     {
                         return Convert.ToString(calculateResult(previousInput)) + currentInput;
                     }
@@ -70,7 +69,7 @@ namespace CSharpCalculator.BO
         
         private static bool inputValidation(string testedInput)
         {
-            return testedInput.All(x => char.IsNumber(x) || x == '+' || x == '-' || x == '*' || x == '/');
+            return testedInput.All(x => char.IsNumber(x) || x == '.' || x == '+' || x == '-' || x == '*' || x == '/');
         }
 
             private static float calculateResult(string calculateInput)

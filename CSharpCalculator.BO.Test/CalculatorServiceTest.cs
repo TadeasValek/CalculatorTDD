@@ -35,6 +35,7 @@ namespace CSharpCalculator.BO.Test
         [TestCase("500/2", "+", "250+")]
         [TestCase("500*2", "/", "1000/")]
 
+
         public void ParseInputTest(string previousInput, string currentInput, string expectedResult)
         {
             string actualResult = CalculatorService.ParseInput(previousInput, currentInput);
